@@ -1,0 +1,12 @@
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  color: white;
+}

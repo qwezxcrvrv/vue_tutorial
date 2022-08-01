@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./main.js" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <main id="todo-app">
+    <div class="input">
+      <label for="input__field">Write your To Do:</label>
+      <input @keyup.enter="addTodo" ref="todoInput" v-model="userInput" id="input__field" type="text">
+
+      <button v-on:click="addTodo" type="button">Add</button>
+
+    </div>
+    <span>You have completed {{completedTodos}}/{{ todoList.length }} todos</span>
+    <ul class="list">
+      <li v-for="(todo, index) of todoList" :key="todo.string" class="todo">
+        <h3 class="todo__heading" :class="{completed: todo.completed}">{{
+          todo.string }}</h3>
+        <button v-if="!todo.completed" @click="todo.completed = true;" type="button">Complete</button>
+        <button v-else @click="todo.completed = false;" type="button">Incomplete</button>
+        <button @click="removeTodo(index)" type="button">Remove</button>
+      </li>
+
+    </ul>
+  </main>
+
+
+</body>
+
+</html>
